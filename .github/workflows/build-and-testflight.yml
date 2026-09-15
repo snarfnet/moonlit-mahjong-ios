@@ -86,8 +86,10 @@ jobs:
             -configuration Release \
             -destination "generic/platform=iOS" \
             -archivePath build/KawasakiMahjong.xcarchive \
+            CODE_SIGN_STYLE=Manual \
             CODE_SIGN_IDENTITY="Apple Distribution" \
             DEVELOPMENT_TEAM=83VGKGSQUH \
+            PROVISIONING_PROFILE_SPECIFIER_APP="KawasakiMahjong App Store" \
             OTHER_CODE_SIGN_FLAGS="--keychain build.keychain" \
             > build/archive.log 2>&1 || { grep -E "error:|\*\* " build/archive.log | tail -60; exit 1; }
           grep -E "warning: .*sign|ARCHIVE SUCCEEDED" build/archive.log | tail -5

@@ -29,7 +29,7 @@ jobs:
         run: |
           gh release download "${{ inputs.release_tag }}" -p 'ios-xcode.zip' -D dl
           mkdir xcode
-          unzip -q dl/ios-xcode.zip -d xcode
+          tar -xf dl/ios-xcode.zip -C xcode   # bsdtar は zip64 も読める（unzip は 1GB 超で失敗した）
           ls xcode
           test -d xcode/Unity-iPhone.xcodeproj
 
